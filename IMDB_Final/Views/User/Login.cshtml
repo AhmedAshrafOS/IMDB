@@ -1,0 +1,60 @@
+﻿@model IMDB_Final.Models.User
+
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="reg">
+
+
+
+
+
+            <div class="fontSign">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "labelss" })
+                <div class="col-md-10">
+
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "input", placeholder = "UserName" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="fontSign">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "labelss" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "input" placeholder = "Password"} })*@
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input", placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="fontSign">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit"> LogIn</button>
+                </div>
+
+            </div>
+            @Html.ValidationMessage("CustomError", new { @class = "fontSign" })
+
+        </div>
+
+    }
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+</body>
+</html>

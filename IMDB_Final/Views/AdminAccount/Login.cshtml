@@ -1,0 +1,58 @@
+﻿@model IMDB_Final.Models.Admin
+
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+
+
+
+            <div class="fontSign">
+                @Html.LabelFor(model => model.AdminName, htmlAttributes: new { @class = "labelss" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdminName, new { htmlAttributes = new { @class = "input" } })
+                    @Html.ValidationMessageFor(model => model.AdminName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="fontSign">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "labelss" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+            <div class="fontSign">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit"> LogIn</button>
+                </div>
+
+            </div>
+            @Html.ValidationMessage("CustomError", new { @class = "fontSign" })
+
+        </div>
+
+    }
+
+    @*<div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+</body>
+</html>
