@@ -1,0 +1,74 @@
+﻿@model IEnumerable<IMDB_Final.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminHomeLayout.cshtml";
+
+}
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateMovie")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Dierctor")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Like)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dislike)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director.FirstName)
+                @Html.DisplayFor(modelItem => item.Director.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @if (item.Image != null)
+                {
+                    @*@Html.DisplayFor(modelItem => item.Image)*@
+                    <div class="figure-img">
+
+                        <img src="~/imgs/ProfileMovie/@item.Image"  alt="error" width="50" height="50" >
+                    </div>
+                }
+                else
+                {
+                    <img src="~/imgs/ProfileMovie/no-user.png" width="50" height="50">
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Like)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dislike)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie" , id = item.MovieId }) |
+                @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -18,6 +18,8 @@ namespace IMDB_Final.Models
         [Required(ErrorMessage = "This Field is Required")]
         public int Age { get; set; }
 
+        public virtual ICollection<Movie> Movies { get; set; }
+
 
         //Navigation Properties
         //User Connectios

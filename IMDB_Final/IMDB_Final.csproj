@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminAccountController.cs" />
     <Compile Include="Controllers\AdminDirectorController.cs" />
+    <Compile Include="Controllers\AdminMovieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -128,12 +129,17 @@
     <Compile Include="Migrations\202204282124529_FirstDB.designer.cs">
       <DependentUpon>202204282124529_FirstDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204300159065_Movie add.cs" />
+    <Compile Include="Migrations\202204300159065_Movie add.designer.cs">
+      <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Director.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieDierctors.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminServices.cs" />
@@ -170,6 +176,8 @@
     <Content Include="imgs\imdb-title.jpg" />
     <Content Include="imgs\IMDB.png" />
     <Content Include="imgs\menu.svg" />
+    <Content Include="imgs\ProfileMovie\MV5BMTkxNzg1OTU4M15BMl5BanBnXkFtZTcwMjcyMjI5MQ%40%40._V1_FMjpg_UX1000_.jpg" />
+    <Content Include="imgs\ProfileMovie\no-user.png" />
     <Content Include="imgs\right-arrow-black-triangle.svg" />
     <Content Include="imgs\right-arrow-triangle.svg" />
     <Content Include="imgs\right-arrow.svg" />
@@ -223,6 +231,11 @@
     <Content Include="Views\AdminDirector\Create.cshtml" />
     <Content Include="Views\AdminDirector\Edit.cshtml" />
     <Content Include="Views\AdminDirector\Delete.cshtml" />
+    <Content Include="Views\AdminMovie\CreateMovie.cshtml" />
+    <Content Include="Views\AdminMovie\Index.cshtml" />
+    <Content Include="Views\AdminMovie\DetailsMovie.cshtml" />
+    <Content Include="Views\AdminMovie\EditMovie.cshtml" />
+    <Content Include="Views\AdminMovie\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -257,6 +270,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204282124529_FirstDB.resx">
       <DependentUpon>202204282124529_FirstDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204300159065_Movie add.resx">
+      <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

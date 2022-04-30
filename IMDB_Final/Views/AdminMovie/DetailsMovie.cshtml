@@ -1,0 +1,71 @@
+﻿@model IMDB_Final.Models.Movie
+
+@{
+    ViewBag.Title = "DetailsMovie";
+    Layout = "~/Views/Shared/_AdminHomeLayout.cshtml";
+}
+
+<h2>DetailsMovie</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Dierctor")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director.FirstName)
+            @Html.DisplayFor(model => model.Director.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieName)
+        </dd>
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Like)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Like)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dislike)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dislike)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @if (Model.Image != null)
+            {
+            <div class="image-size">
+                <img src="~/imgs/ProfileMovie/@Model.Image" alt="error" width="300" height="450">
+            </div>
+            }
+            else
+            {
+                <img src="~/imgs/ProfileMovie/no-user.png" width="100" height="100" />
+
+            }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
