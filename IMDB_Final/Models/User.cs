@@ -29,9 +29,9 @@ namespace IMDB_Final.Models
         public string Password { get; set; }
         //Relationships(Many-to-Many)
 
-        public ICollection<Movie> Movies { get; set; }
-        public ICollection<Actor> Actors { get; set; }
-        public ICollection<Director> Directors { get; set; }
+        //public ICollection<Movie> Movies { get; set; }
+        //public ICollection<Actor> Actors { get; set; }
+        //public ICollection<Director> Directors { get; set; }
 
 
     }

@@ -25,6 +25,11 @@ namespace IMDB_Final
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/bundles/chosen").Include(
+                    "~/Scripts/chosen/chosen.jquery.min.js",
+                    "~/Scripts/chosen/chosen.jquery.js",
+                    "~/Scripts/chosen/docsupport/prism.js",
+                    "~/Scripts/chosen/docsupport/init.js"));
         }
     }
 }

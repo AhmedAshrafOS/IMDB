@@ -25,10 +25,15 @@ namespace IMDB_Final.Controllers
         public ActionResult CreateMovie()
         {
             var Director = db.Directors.ToList();
+            var Actor = db.Actors.ToList();
             MovieDierctors movieDierctors = new MovieDierctors
             {
                 Directors = Director,
+                Actors=Actor,
             };
+      
+
+            //ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName");
 
             return View(movieDierctors);
         }
@@ -46,7 +51,25 @@ namespace IMDB_Final.Controllers
                     movieDierctors.Movie.Image = pic;
                 }
                 db.Movies.Add(movieDierctors.Movie);
+           
+                foreach (var item in movieDierctors.Actorss)
+                {
+                    MovesActors MovesActors = new MovesActors()
+                    {
+
+                        MovieId = movieDierctors.Movie.MovieId,
+
+                        ActorId = item
+                    };
+
+                    db.MovesActors.Add(MovesActors);
+
+                }
                 db.SaveChanges();
+
+                //movieDierctors.Movie.Actors = movieDierctors.Actors;
+
+
                 return RedirectToAction("Index");
 
             }
@@ -58,12 +81,28 @@ namespace IMDB_Final.Controllers
 
         public ActionResult DetailsMovie(int id)
         {
-            var Movie = db.Movies.SingleOrDefault(x => x.MovieId == id);
-            if (Movie == null)
+            List<int> ActorList = new List<int>();
+            var movie = db.Movies.SingleOrDefault(x => x.MovieId == id);
+            var Dierctor = db.Directors.SingleOrDefault(x => x.DirectorId == movie.DirectorId);
+            var ActorID = db.MovesActors.Where(x => x.MovieId == id).ToList();
+            var Actors = db.Actors.ToList();
+            foreach (var iteam in ActorID)
+            {
+                ActorList.Add((int)iteam.ActorId);
+            }
+            MovieDierctors MovieDetails = new MovieDierctors
+            {
+                Actors=Actors,
+                Movie=movie,
+                Actorss= ActorList.ToArray(),
+                Director= Dierctor
+
+            };
+            if (MovieDetails == null)
             {
                 return HttpNotFound();
             }
-            return View(Movie);
+            return View(MovieDetails);
         }
 
 

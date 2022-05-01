@@ -13,46 +13,48 @@ namespace IMDB_Final.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<MovesActors>().HasKey(sc => new { sc.MovieId, sc.ActorId});
+
             //Movies and Actors
-            modelBuilder.Entity<Movie>()
-               .HasMany<Actor>(s => s.Actors)
-               .WithMany(c => c.Movies)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("MovieId");
-                   cs.MapRightKey("ActorId");
-                   cs.ToTable("MovieActor");
-               });
+            //modelBuilder.Entity<Movie>()
+            //   .HasMany<Actor>(s => s.Actors)
+            //   .WithMany(c => c.Movies)
+            //   .Map(cs =>
+            //   {
+            //       cs.MapLeftKey("MovieId");
+            //       cs.MapRightKey("ActorId");
+            //       cs.ToTable("MovieActor");
+            //   });
             //User and Movies
-            modelBuilder.Entity<User>()
-               .HasMany<Movie>(s => s.Movies)
-               .WithMany(c => c.Users)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("UserId");
-                   cs.MapRightKey("MovieId");
-                   cs.ToTable("UserMovie");
-               });
-            //User and Actors
-            modelBuilder.Entity<User>()
-               .HasMany<Actor>(s => s.Actors)
-               .WithMany(c => c.Users)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("UserId");
-                   cs.MapRightKey("ActorId");
-                   cs.ToTable("UserActor");
-               });
-            //User and Directors
-            modelBuilder.Entity<User>()
-               .HasMany<Director>(s => s.Directors)
-               .WithMany(c => c.Users)
-               .Map(cs =>
-               {
-                   cs.MapLeftKey("UserId");
-                   cs.MapRightKey("DirectorId");
-                   cs.ToTable("UserDirector");
-               });
+            //modelBuilder.Entity<User>()
+            //   .HasMany<Movie>(s => s.Movies)
+            //   .WithMany(c => c.Users)
+            //   .Map(cs =>
+            //   {
+            //       cs.MapLeftKey("UserId");
+            //       cs.MapRightKey("MovieId");
+            //       cs.ToTable("UserMovie");
+            //   });
+            ////User and Actors
+            //modelBuilder.Entity<User>()
+            //   .HasMany<Actor>(s => s.Actors)
+            //   .WithMany(c => c.Users)
+            //   .Map(cs =>
+            //   {
+            //       cs.MapLeftKey("UserId");
+            //       cs.MapRightKey("ActorId");
+            //       cs.ToTable("UserActor");
+            //   });
+            ////User and Directors
+            //modelBuilder.Entity<User>()
+            //   .HasMany<Director>(s => s.Directors)
+            //   .WithMany(c => c.Users)
+            //   .Map(cs =>
+            //   {
+            //       cs.MapLeftKey("UserId");
+            //       cs.MapRightKey("DirectorId");
+            //       cs.ToTable("UserDirector");
+            //   });
 
         }
 
@@ -61,5 +63,6 @@ namespace IMDB_Final.Models
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Director> Directors { get; set; }
+        public DbSet<MovesActors> MovesActors { get; set; }
     }
 }

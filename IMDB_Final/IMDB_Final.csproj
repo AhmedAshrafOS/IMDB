@@ -133,11 +133,16 @@
     <Compile Include="Migrations\202204300159065_Movie add.designer.cs">
       <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205011116249_changedatabase.cs" />
+    <Compile Include="Migrations\202205011116249_changedatabase.designer.cs">
+      <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AppDbContext.cs" />
     <Compile Include="Models\Director.cs" />
+    <Compile Include="Models\MovesActors.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="ViewModels\MovieActors.cs" />
     <Compile Include="ViewModels\MovieDierctors.cs" />
@@ -194,11 +199,41 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\.gitignore" />
+    <Content Include="Scripts\chosen_v1.8.7\composer.json" />
+    <Content Include="Scripts\chosen_v1.8.7\LICENSE.md" />
+    <Content Include="Scripts\chosen_v1.8.7\.travis.yml" />
+    <Content Include="Scripts\chosen_v1.8.7\contributing.md" />
+    <Content Include="Scripts\chosen_v1.8.7\Gruntfile.coffee" />
+    <Content Include="Scripts\chosen_v1.8.7\package-lock.json" />
+    <Content Include="Scripts\chosen_v1.8.7\package-travis.yml" />
+    <Content Include="Scripts\chosen_v1.8.7\package.json" />
+    <Content Include="Scripts\chosen_v1.8.7\publish-package.sh" />
+    <Content Include="Scripts\chosen_v1.8.7\README.md" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen-sprite%402x.png" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen-sprite.png" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.css" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.jquery.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.min.css" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.proto.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.proto.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\chosen.png" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\init.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\init.proto.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\oss-credit.png" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prism.css" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prism.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prototype-1.7.0.0.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\style.css" />
+    <Content Include="Scripts\chosen_v1.8.7\index.html" />
+    <Content Include="Scripts\chosen_v1.8.7\index.proto.html" />
+    <Content Include="Scripts\chosen_v1.8.7\options.html" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -267,8 +302,6 @@
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202204282124529_FirstDB.resx">
@@ -276,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204300159065_Movie add.resx">
       <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205011116249_changedatabase.resx">
+      <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

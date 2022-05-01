@@ -7,7 +7,9 @@ namespace IMDB_Final.ViewModels
 {
     public class MovieActors
     {
-        public List<Actor> Actors { get; set; }
-        public List<Movie> Movies { get; set; }
+        public int ActorIdM { get; set; }
+        public int MovieIdM { get; set; }
+
+        public virtual Movie Movies { get; set; }
     }
 }

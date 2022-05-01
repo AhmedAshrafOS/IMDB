@@ -1,4 +1,4 @@
-﻿@model IMDB_Final.Models.Movie
+﻿@model IMDB_Final.ViewModels.MovieDierctors
 
 @{
     ViewBag.Title = "DetailsMovie";
@@ -16,46 +16,63 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Director.FirstName)
-            @Html.DisplayFor(model => model.Director.LastName)
+            @Html.ActionLink(Model.Director.FirstName + " " + Model.Director.LastName, "DirectorDetails", new { controller = "AdminDirector", id = Model.Movie.DirectorId })
+
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MovieName)
+            @Html.DisplayNameFor(model => model.Movie.MovieName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MovieName)
-        </dd>
-
-
-
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Like)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Like)
+            @Html.DisplayFor(model => model.Movie.MovieName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Dislike)
+            @Html.DisplayNameFor(model => model.Movie.Like)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Dislike)
+            @Html.DisplayFor(model => model.Movie.Like)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.Movie.Dislike)
         </dt>
+
         <dd>
-            @if (Model.Image != null)
+            @Html.DisplayFor(model => model.Movie.Dislike)
+        </dd>
+        <dd>
+            <h6>Actors</h6>
+            @foreach (var record in Model.Actorss)
             {
-            <div class="image-size">
-                <img src="~/imgs/ProfileMovie/@Model.Image" alt="error" width="300" height="450">
-            </div>
+                <ui>
+                    <li>
+                        @foreach (var record2 in Model.Actors)
+                        {
+                            if (record2.ActorId == record)
+                            {
+                                @Html.ActionLink(record2.FirstName+" "+record2.LastName, "DetailsMovie", new { controller = "AdminMovie", id = record })
+                            }
+
+                        }
+
+                    </li>
+                </ui>
+            }
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie.Image)
+        </dt>
+
+        <dd>
+            @if (Model.Movie.Image != null)
+            {
+                <div class="image-size">
+                    <img src="~/imgs/ProfileMovie/@Model.Movie.Image" alt="error" width="300" height="450">
+                </div>
             }
             else
             {
@@ -66,6 +83,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = Model.MovieId }) |
+    @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = Model.Movie.MovieId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -17,8 +17,9 @@ namespace IMDB_Final.Models
 
         //Navigation Properties
         //User Connectios(Many-to-Many)
-        public ICollection<User> Users { get; set; }
+        //public ICollection<User> Users { get; set; }
         //Movies Connections (Many-to-Many)
-        public ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<MovesActors> MovesActors { get; set; }
+        //public ICollection<Movie> Movies { get; set; }
     }
 }
