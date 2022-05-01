@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IMDB_Final.Models;
+using IMDB_Final.ViewModels;
 using IMDB_Final.Services;
 namespace IMDB_Final.Controllers
 {
@@ -136,6 +137,47 @@ namespace IMDB_Final.Controllers
             return HttpNotFound();
         }
         // POST: Director/Delete
+        //DetailsDierctor
+        //[HttpGet]
+        //public ActionResult DirectorDetails()
+        //{
+        //    using (AppDbContext db = new AppDbContext())
+        //    {
 
+        //        var Movies = db.Movies.ToList();
+
+        //        MovieDierctors AllDierctors = new MovieDierctors
+        //        {
+        //            Directors = Directors
+        //        };
+        //        return View(AllDierctors);
+        //    }
+
+        //}
+
+
+        [HttpGet]
+        public ActionResult DirectorDetails(int? id)
+        {
+            using (AppDbContext db = new AppDbContext())
+            {
+                var Director = db.Directors.Find(id);
+                var MovieDierctor = db.Movies.Where(x => x.DirectorId == id).ToList();
+                MovieDierctors AllDierctors = new MovieDierctors
+                {
+                    Director = Director,
+                    Movies = MovieDierctor,
+                };
+
+                return View(AllDierctors);
+            }
+        }
+        //public ActionResult DirectorDetails(int? id)
+        //{
+        //    var directorDetails = directorService.ReadById(id.Value);
+        //    if (directorDetails == null)
+        //        return RedirectToAction("Index");
+        //    return View(directorDetails);
+        //}
     }
 }

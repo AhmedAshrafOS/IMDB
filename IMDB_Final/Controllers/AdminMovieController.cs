@@ -1,4 +1,5 @@
 ﻿using IMDB_Final.Models;
+using IMDB_Final.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

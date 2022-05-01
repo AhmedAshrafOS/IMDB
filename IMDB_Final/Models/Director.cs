@@ -20,7 +20,6 @@ namespace IMDB_Final.Models
 
         public virtual ICollection<Movie> Movies { get; set; }
 
-
         //Navigation Properties
         //User Connectios
         public ICollection<User> Users { get; set; }

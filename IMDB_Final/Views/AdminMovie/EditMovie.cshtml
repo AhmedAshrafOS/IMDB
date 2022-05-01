@@ -1,4 +1,4 @@
-﻿@model IMDB_Final.Models.MovieDierctors
+﻿@model IMDB_Final.ViewModels.MovieDierctors
 
 @{
     ViewBag.Title = "EditMovie";
@@ -7,7 +7,7 @@
 
 <h2>EditMovie</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditMovie", "AdminMovie", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -44,7 +44,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Movie.DirectorId, "DirectorId", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(x => x.Movie.DirectorId, new SelectList(Model.Directors, "DirectorId", "FirstName"), "Select Dierctor", new { @class = "form-control", type = "number" })
+            @Html.DropDownListFor(x => x.Movie.DirectorId, new SelectList(Model.Directors, "DirectorId", "FirstName"), "Select Dierctor", new { @class = "form-control", type = "number" ,})
             @Html.ValidationMessageFor(model => model.Movie.DirectorId, "", new { @class = "text-danger" })
         </div>
     </div>

@@ -28,6 +28,7 @@ namespace IMDB_Final.Models
         public ICollection<User> Users { get; set; }
         //Actors Connections (Many-to-Many)
         public ICollection<Actor> Actors { get; set; }
+
         //Directos Connections (Many-to-One)
         public int DirectorId { get; set; }
         [ForeignKey("DirectorId")]
