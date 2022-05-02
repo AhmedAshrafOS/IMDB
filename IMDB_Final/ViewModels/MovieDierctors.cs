@@ -14,6 +14,8 @@ namespace IMDB_Final.ViewModels
         public List<Movie> Movies { get; set; }
         public List<Actor> Actors { get; set; }
         public int[] Actorss { get; set; }
+        public int[] Moviess { get; set; }
+        public string[] Images { get; set; }
         public virtual Actor Actor { get; set; }
 
     }

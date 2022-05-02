@@ -118,6 +118,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminAccountController.cs" />
+    <Compile Include="Controllers\AdminActorController.cs" />
     <Compile Include="Controllers\AdminDirectorController.cs" />
     <Compile Include="Controllers\AdminMovieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -136,6 +137,10 @@
     <Compile Include="Migrations\202205011116249_changedatabase.cs" />
     <Compile Include="Migrations\202205011116249_changedatabase.designer.cs">
       <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205021156320_ImagesActor.cs" />
+    <Compile Include="Migrations\202205021156320_ImagesActor.designer.cs">
+      <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
@@ -183,6 +188,7 @@
     <Content Include="imgs\imdb-title.jpg" />
     <Content Include="imgs\IMDB.png" />
     <Content Include="imgs\menu.svg" />
+    <Content Include="imgs\ProfileActor\no-user.png" />
     <Content Include="imgs\ProfileMovie\MV5BMTkxNzg1OTU4M15BMl5BanBnXkFtZTcwMjcyMjI5MQ%40%40._V1_FMjpg_UX1000_.jpg" />
     <Content Include="imgs\ProfileMovie\no-user.png" />
     <Content Include="imgs\right-arrow-black-triangle.svg" />
@@ -274,6 +280,11 @@
     <Content Include="Views\AdminMovie\EditMovie.cshtml" />
     <Content Include="Views\AdminMovie\Delete.cshtml" />
     <Content Include="Views\AdminDirector\DirectorDetails.cshtml" />
+    <Content Include="Views\AdminActor\CreateActor.cshtml" />
+    <Content Include="Views\AdminActor\Index.cshtml" />
+    <Content Include="Views\AdminActor\DetailsActor.cshtml" />
+    <Content Include="Views\AdminActor\EditActor.cshtml" />
+    <Content Include="Views\AdminActor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205011116249_changedatabase.resx">
       <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205021156320_ImagesActor.resx">
+      <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -112,7 +112,15 @@ namespace IMDB_Final.Controllers
         {
             if (id != null)
             {
-                var Movie = db.Movies.SingleOrDefault(a => a.MovieId == id);
+                List<int> ActorList = new List<int>();
+                var Movie = db.Movies.SingleOrDefault(x => x.MovieId == id);
+                var ActorID = db.MovesActors.Where(x => x.MovieId == id).ToList();
+                var Dierctor = db.Directors.ToList();
+                var Actors = db.Actors.ToList();
+                foreach (var iteam in ActorID)
+                {
+                    ActorList.Add((int)iteam.ActorId);
+                }
                 if (Movie == null)
                 {
                     return HttpNotFound();
@@ -122,8 +130,10 @@ namespace IMDB_Final.Controllers
 
                 MovieDierctors movieDierctors = new MovieDierctors
                 {
-                    Directors = Directors,
+                    Actors = Actors,
                     Movie = Movie,
+                    Directors = Dierctor,
+                    Actorss = ActorList.ToArray(),
                 };
 
                 return View(movieDierctors);
@@ -156,6 +166,30 @@ namespace IMDB_Final.Controllers
                     file.SaveAs(path);
                     Movie.Image = pic;
                 }
+
+
+                var MovieActors = db.MovesActors.Where(u => u.MovieId == movieDierctors.Movie.MovieId).ToList();
+                foreach (var item in MovieActors)
+                {
+                    db.MovesActors.Remove(item);
+                }
+                foreach (var item in movieDierctors.Actorss)
+                {
+
+
+                    //MovieActors.MovieId = movieDierctors.Movie.MovieId;
+
+                        MovesActors MovesActors = new MovesActors()
+                        {
+
+                            MovieId = movieDierctors.Movie.MovieId,
+
+                            ActorId = item
+                        };
+
+                        db.MovesActors.Add(MovesActors);
+
+                }
                 db.Entry(Movie).State = EntityState.Modified;
                 db.SaveChanges();
 
@@ -182,8 +216,12 @@ namespace IMDB_Final.Controllers
         {
             try
             {
-  
-                    if (id == null)
+                var MovieActors = db.MovesActors.Where(u => u.MovieId == movie.MovieId).ToList();
+                foreach (var item in MovieActors)
+                {
+                    db.MovesActors.Remove(item);
+                }
+                if (id == null)
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     movie = db.Movies.Find(id);
                     if (movie == null)

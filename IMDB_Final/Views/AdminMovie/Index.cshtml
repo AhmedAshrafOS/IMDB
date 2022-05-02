@@ -43,12 +43,13 @@
                 @Html.DisplayFor(modelItem => item.MovieName)
             </td>
             <td>
+
                 @if (item.Image != null)
                 {
                     @*@Html.DisplayFor(modelItem => item.Image)*@
                     <div class="figure-img">
 
-                        <img src="~/imgs/ProfileMovie/@item.Image"  alt="error" width="50" height="50" >
+                        <img src="@Url.Content(item.Image)" alt="error" width="50" height="50">
                     </div>
                 }
                 else
