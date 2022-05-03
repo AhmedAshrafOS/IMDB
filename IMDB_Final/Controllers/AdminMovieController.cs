@@ -2,7 +2,10 @@
 using IMDB_Final.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,20 +41,53 @@ namespace IMDB_Final.Controllers
             return View(movieDierctors);
         }
         [HttpPost]
-        public ActionResult CreateMovie(MovieDierctors movieDierctors,HttpPostedFileBase file)
+        public ActionResult CreateMovie(MovieDierctors movieDierctors)
         {
             if (ModelState.IsValid)
             {
-                if (file != null)
+                try
                 {
-                    string pic = System.IO.Path.GetFileName(file.FileName);
-                    string path = System.IO.Path.Combine(Server.MapPath("~/imgs/ProfileMovie/"), pic);
+                    HttpFileCollectionBase files = Request.Files;
 
-                    file.SaveAs(path);
-                    movieDierctors.Movie.Image = pic;
+                    var x ="";
+                    if (!string.IsNullOrEmpty(movieDierctors.Movie.ToString()))
+                    {
+
+
+
+                            for (int i = 0; i < files.Count; i++)
+                            {
+                                HttpPostedFileBase file = files[i];
+                                if (file.ContentType != "application/octet-stream") { 
+                                byte[] ByteImgArray;
+                                ByteImgArray = ConvertToBytes(file);
+                                var ImageQuality = ConfigurationManager.AppSettings["ImageQuality"];
+                                var reduceIMage = ReduceImageSize(ByteImgArray, ImageQuality);
+                                string fileName = file.FileName;
+                                x += fileName + ",";
+                                string serverMapPath = Server.MapPath("~/imgs/ProfileMovie/");
+                                string filePath = serverMapPath + "//" + fileName;
+                                SaveFile(reduceIMage, filePath, file.FileName);
+                                }
+                            }
+                        if (x != "") { 
+                         movieDierctors.Movie.Image = x.Remove(x.Length - 1);
+                         db.Movies.Add(movieDierctors.Movie);
+                         }
+                        else
+                        {
+                            movieDierctors.Movie.Image = null;
+                            db.Movies.Add(movieDierctors.Movie);
+
+                        }
+                    }
                 }
-                db.Movies.Add(movieDierctors.Movie);
-           
+                catch
+                {
+                    return HttpNotFound();
+                }
+
+
                 foreach (var item in movieDierctors.Actorss)
                 {
                     MovesActors MovesActors = new MovesActors()
@@ -98,6 +134,12 @@ namespace IMDB_Final.Controllers
                 Director= Dierctor
 
             };
+            if (movie.Image != null)
+            {
+                MovieDetails.Images = movie.Image.Split(new char[] { ',' });
+            }
+            else
+                MovieDetails.Images = null;
             if (MovieDetails == null)
             {
                 return HttpNotFound();
@@ -145,7 +187,7 @@ namespace IMDB_Final.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditMovie(MovieDierctors movieDierctors, HttpPostedFileBase file)
+        public ActionResult EditMovie(MovieDierctors movieDierctors)
         {
             if (ModelState.IsValid)
             {
@@ -155,17 +197,45 @@ namespace IMDB_Final.Controllers
                 Movie.Like = movieDierctors.Movie.Like;
                 Movie.Dislike = movieDierctors.Movie.Dislike;
                 Movie.DirectorId = movieDierctors.Movie.DirectorId;
-                Movie.Image = movieDierctors.Movie.Image;
-
-
-                if (file != null)
+                try
                 {
-                    string pic = System.IO.Path.GetFileName(file.FileName);
-                    string path = System.IO.Path.Combine(Server.MapPath("~/imgs/ProfileMovie/"), pic);
+                    HttpFileCollectionBase files = Request.Files;
 
-                    file.SaveAs(path);
-                    Movie.Image = pic;
+                    var x = "";
+                    if (!string.IsNullOrEmpty(movieDierctors.Movie.ToString()))
+                    {
+
+
+
+                        for (int i = 0; i < files.Count; i++)
+                        {
+                            HttpPostedFileBase file = files[i];
+                            if (file.ContentType != "application/octet-stream")
+                            {
+                                byte[] ByteImgArray;
+                                ByteImgArray = ConvertToBytes(file);
+                                var ImageQuality = ConfigurationManager.AppSettings["ImageQuality"];
+                                var reduceIMage = ReduceImageSize(ByteImgArray, ImageQuality);
+                                string fileName = file.FileName;
+                                x += fileName + ",";
+                                string serverMapPath = Server.MapPath("~/imgs/ProfileMovie/");
+                                string filePath = serverMapPath + "//" + fileName;
+                                SaveFile(reduceIMage, filePath, file.FileName);
+                            }
+                        }
+                        if (x != "")
+                        {
+                            movieDierctors.Movie.Image = x.Remove(x.Length - 1);
+                            Movie.Image = movieDierctors.Movie.Image;
+                        }
+     
+                    }
                 }
+                catch
+                {
+                    return HttpNotFound();
+                }
+
 
 
                 var MovieActors = db.MovesActors.Where(u => u.MovieId == movieDierctors.Movie.MovieId).ToList();
@@ -238,48 +308,87 @@ namespace IMDB_Final.Controllers
             }
         }
 
+        #region ImageResize
+        private byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] CoverImageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            CoverImageBytes = reader.ReadBytes((int)image.ContentLength);
+            return CoverImageBytes;
+        }
+        public static byte[] ReduceImageSize(byte[] inputBytes, string ImageQuality)
+        {
+            Byte[] imageBytes;
+            int jpegQuality;
 
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id != null)
-        //    {
-        //        var Movie = db.Movies.Find(id);
+            //string ImageQuality = "";/*ConfigurationManager.AppSettings["ImageQuality"];*/
+            if (!string.IsNullOrEmpty(ImageQuality))
+            {
+                jpegQuality = Convert.ToInt32(ImageQuality);
+            }
+            else
+            {
+                jpegQuality = 25;
+            }
 
-        //        var MovieInfo = new Movie
-        //        {
-        //            MovieId = Movie.MovieId,
-        //            MovieName = Movie.MovieName,
-        //            Image = Movie.Image,
-        //            Like = Movie.Like,
-        //            Dislike = Movie.Dislike,
-        //            DirectorId = Movie.DirectorId,
-        //        };
+            System.Drawing.Image image;
 
-        //        return View(MovieInfo);
-        //    }
-        //    return RedirectToAction("Index");
-        //}
-        //[HttpPost]
-        //public ActionResult DeleteConfirmed(int? id)
-        //{
-        //    if (id != null)
-        //    {
-        //        var Movie = db.Movies.Find(id);
+            using (var inputStream = new MemoryStream(inputBytes))
+            {
+                // Create an Encoder object based on the GUID  for the Quality parameter category.  
+                System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
+                image = System.Drawing.Image.FromStream(inputStream);
+                var jpegEncoder = ImageCodecInfo.GetImageDecoders().First(c => c.FormatID == ImageFormat.Jpeg.Guid);
+                var encoderParameters = new EncoderParameters(1);
+                EncoderParameter myEncoderParameter = new EncoderParameter(myEncoder, 50L);
+                encoderParameters.Param[0] = myEncoderParameter;
+                using (var outputStream = new MemoryStream())
+                {
+                    image.Save(outputStream, jpegEncoder, encoderParameters);
+                    imageBytes = outputStream.ToArray();
+                }
+            }
+            return imageBytes;
+        }
+        public string SaveFile(byte[] file, string filePath, string filename)
+        {
+            string directoryPath = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(directoryPath))
+                System.IO.Directory.CreateDirectory(directoryPath);
 
-        //        if (Movie != null)
-        //        {
-        //            db.Movies.Remove(Movie);
-        //            return RedirectToAction("Index");
+            if (file != null)
+            {
+                using (System.Drawing.Image image = System.Drawing.Image.FromStream(new System.IO.MemoryStream(file)))
+                {
+                    //var i = Image.FromFile(filePath + file);
+                    //var i2 = new Bitmap(i);
+                    if (filename.ToLower().Contains(".jpg") || filename.ToLower().Contains(".jpeg"))
+                    {
+                        image.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        //i2.Save(filePath, ImageFormat.Jpeg);
+                    }
+                    else if (filename.ToLower().Contains(".png"))
+                    {
+                        image.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
+                        //i2.Save(filePath, ImageFormat.Png);
+                    }
+                    else if (filename.ToLower().Contains(".bmp"))
+                    {
+                        image.Save(filePath, System.Drawing.Imaging.ImageFormat.Bmp);
+                        //i2.Save(filePath, ImageFormat.Bmp);
+                    }
+                    else if (filename.ToLower().Contains(".gif"))
+                    {
+                        image.Save(filePath, System.Drawing.Imaging.ImageFormat.Gif);
+                        //i2.Save(filePath, ImageFormat.Gif);
+                    }
+                }
+            }
+            return string.Empty;
+        }
 
-        //        }
-        //        else
-        //        {
-        //            return RedirectToAction("Delete", new { id = Movie.MovieId });
-        //        }
+        #endregion
 
-        //    }
-        //    return HttpNotFound();
-        //}
 
 
     }

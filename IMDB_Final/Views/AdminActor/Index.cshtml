@@ -44,16 +44,12 @@
 
 
                 @if (item.Image != null)
-                    {
-                        var image = item.Image.Split(new char[] { ',' });
-
-             <div class="figure-img">
-             <img src="~/imgs/ProfileActor/@image[0]"alt="error" width="50" height="50">
-            </div>
-
-                    @*@Html.DisplayFor(modelItem => item.Image)*@
-
-                }
+                 {
+                   var image = item.Image.Split(new char[] { ',' });
+                    <div class="figure-img">
+                        <img src="~/imgs/ProfileActor/@image[0]"alt="error" width="50" height="50">
+                    </div>
+                 }
                 else
                 {
                     <img src="~/imgs/ProfileMovie/no-user.png" width="50" height="50">

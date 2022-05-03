@@ -21,7 +21,6 @@ namespace IMDB_Final.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            //int k = 0;
   
             MovieDierctors movieDierctors = new MovieDierctors();
             movieDierctors.Actors= db.Actors.ToList();
@@ -63,22 +62,29 @@ namespace IMDB_Final.Controllers
                     var x = "";
                     if (!string.IsNullOrEmpty(movieDierctors.Actor.ToString()))
                     {
-
-                        for (int i = 0; i < files.Count; i++)
+                        if (movieDierctors.Actor.Image != null)
                         {
-                            HttpPostedFileBase file = files[i];
-                            byte[] ByteImgArray;
-                            ByteImgArray = ConvertToBytes(file);
-                            var ImageQuality = ConfigurationManager.AppSettings["ImageQuality"];
-                            var reduceIMage = ReduceImageSize(ByteImgArray, ImageQuality);
-                            string fileName = file.FileName;
-                            x += fileName + ",";
-                            string serverMapPath = Server.MapPath("~/imgs/ProfileActor/");
-                            string filePath = serverMapPath + "//" + fileName;
-                            SaveFile(reduceIMage, filePath, file.FileName);
+                            for (int i = 0; i < files.Count; i++)
+                            {
+                                    HttpPostedFileBase file = files[i];
+                                    byte[] ByteImgArray;
+                                    ByteImgArray = ConvertToBytes(file);
+                                    var ImageQuality = ConfigurationManager.AppSettings["ImageQuality"];
+                                    var reduceIMage = ReduceImageSize(ByteImgArray, ImageQuality);
+                                    string fileName = file.FileName;
+                                    x += fileName + ",";
+                                    string serverMapPath = Server.MapPath("~/imgs/ProfileActor/");
+                                    string filePath = serverMapPath + "//" + fileName;
+                                    SaveFile(reduceIMage, filePath, file.FileName);
+                            }
+                            movieDierctors.Actor.Image = x.Remove(x.Length - 1);
+                            db.Actors.Add(movieDierctors.Actor);
                         }
-                        movieDierctors.Actor.Image = x.Remove(x.Length - 1);
-                        db.Actors.Add(movieDierctors.Actor);
+                        else
+                        {
+                            movieDierctors.Actor.Image = null;
+                            db.Actors.Add(movieDierctors.Actor);
+                        }
                     }
                 }
                 catch (Exception ex)

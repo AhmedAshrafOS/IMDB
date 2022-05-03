@@ -46,10 +46,9 @@
 
                 @if (item.Image != null)
                 {
-                    @*@Html.DisplayFor(modelItem => item.Image)*@
+                    var image = item.Image.Split(new char[] { ',' });
                     <div class="figure-img">
-
-                        <img src="@Url.Content(item.Image)" alt="error" width="50" height="50">
+                        <img src="~/imgs/ProfileMovie/@image[0]" alt="error" width="50" height="50">
                     </div>
                 }
                 else
