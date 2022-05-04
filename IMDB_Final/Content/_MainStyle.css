@@ -1,7 +1,20 @@
-﻿.footer {
-    padding: 40px 0;
+﻿body {
+    display: flex;
+    width: 100%;
+    margin: 0%;
+    justify-content: center;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
     background-color: black;
-    position: fixed;
+    position: relative;
+}
+.test {
+    min-height: 713px;
+    color: red
+}
+.footer {
+    padding: 30px 0;
+    background-color: black;
+    position:   absolute;
     width: 100%;
     bottom: 0;
 }
@@ -66,7 +79,7 @@
 
 
 .reg {
-    position: relative;
+    /*position: relative;*/
     width: 500px;
     height:auto;/*590px;*/
     background: #fff; /*#1b1b1b;*/
@@ -86,6 +99,8 @@
 
 form {
     margin-top: 70px;
+
+    min-height: 1050px;
 }
 
     form .field {

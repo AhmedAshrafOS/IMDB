@@ -14,7 +14,9 @@ namespace IMDB_Final.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MovesActors>().HasKey(sc => new { sc.MovieId, sc.ActorId});
-
+            modelBuilder.Entity<UserActors>().HasKey(sc => new { sc.UserId, sc.ActorId });
+            modelBuilder.Entity<UserDirector>().HasKey(sc => new { sc.UserId, sc.DirectorId });
+            modelBuilder.Entity<UserMovies>().HasKey(sc => new { sc.UserId, sc.MovieId });
             //Movies and Actors
             //modelBuilder.Entity<Movie>()
             //   .HasMany<Actor>(s => s.Actors)
@@ -64,5 +66,8 @@ namespace IMDB_Final.Models
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Director> Directors { get; set; }
         public DbSet<MovesActors> MovesActors { get; set; }
+        public DbSet<UserActors> UserActors { get; set; }
+        public DbSet<UserDirector> UserDirector { get; set; }
+        public DbSet<UserMovies> UserMovies { get; set; }
     }
 }

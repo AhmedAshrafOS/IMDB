@@ -1,0 +1,77 @@
+﻿@model IMDB_Final.ViewModels.UserView
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>UserProfile</h2>
+
+<form>
+    <div class="reg">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.User.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.Address)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Image)
+            </dt>
+            <dd>
+                @if (Model.User.Image != null)
+                {
+                    <div class="image-size">
+                        <img src="~/imgs/ProfileUser/@Model.User.Image" alt="error" class="img-responsive image-center" width="300" height="300" />
+                    </div>
+                }
+                else
+                {
+                    <img src="~/images/profiles/no-user.png" width="50" height="50" />
+                }
+            </dd>
+
+        </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.User.UserId }) |
+            @Html.ActionLink("Back to List", "MainPage", new { id = Model.User.UserId })
+        </p>
+    </div>
+
+</form>
+

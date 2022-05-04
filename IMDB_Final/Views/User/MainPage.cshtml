@@ -1,0 +1,14 @@
+﻿@model IMDB_Final.ViewModels.UserView
+
+@{
+    ViewBag.Title = "MainPage";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="test">    
+    <div style="color:red ; padding:90px;">
+       
+        @Html.ActionLink("UserProfile", "UserProfile", new { controller = "User", id = Model.User.UserId })
+    </div>
+    </div>
+
+

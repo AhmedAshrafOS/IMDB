@@ -142,6 +142,14 @@
     <Compile Include="Migrations\202205021156320_ImagesActor.designer.cs">
       <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205031139387_FirstUserEdit.cs" />
+    <Compile Include="Migrations\202205031139387_FirstUserEdit.designer.cs">
+      <DependentUpon>202205031139387_FirstUserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205040626459_SecondUserEdit.cs" />
+    <Compile Include="Migrations\202205040626459_SecondUserEdit.designer.cs">
+      <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -149,6 +157,9 @@
     <Compile Include="Models\Director.cs" />
     <Compile Include="Models\MovesActors.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\UserActors.cs" />
+    <Compile Include="Models\UserDirector.cs" />
+    <Compile Include="Models\UserMovies.cs" />
     <Compile Include="ViewModels\MovieActors.cs" />
     <Compile Include="ViewModels\MovieDierctors.cs" />
     <Compile Include="Models\User.cs" />
@@ -156,6 +167,7 @@
     <Compile Include="Services\AdminServices.cs" />
     <Compile Include="Services\DirectorService.cs" />
     <Compile Include="ViewModels\UserFavActors.cs" />
+    <Compile Include="ViewModels\UserView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -260,13 +272,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Shared\_Header1.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\User\LoggedIn.cshtml" />
     <Content Include="Views\AdminAccount\Login.cshtml" />
     <Content Include="Views\Shared\_AdminHomeLayout.cshtml" />
     <Content Include="Views\AdminAccount\LoggedIn.cshtml" />
@@ -285,9 +295,13 @@
     <Content Include="Views\AdminActor\DetailsActor.cshtml" />
     <Content Include="Views\AdminActor\EditActor.cshtml" />
     <Content Include="Views\AdminActor\Delete.cshtml" />
+    <Content Include="Views\User\MainPage.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="imgs\ProfileUser\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -326,6 +340,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205021156320_ImagesActor.resx">
       <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205031139387_FirstUserEdit.resx">
+      <DependentUpon>202205031139387_FirstUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040626459_SecondUserEdit.resx">
+      <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

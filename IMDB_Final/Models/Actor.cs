@@ -28,6 +28,7 @@ namespace IMDB_Final.Models
         //public ICollection<User> Users { get; set; }
         //Movies Connections (Many-to-Many)
         public virtual ICollection<MovesActors> MovesActors { get; set; }
+        public virtual ICollection<UserActors> UserActors { get; set; }
         //public ICollection<Movie> Movies { get; set; }
     }
 }

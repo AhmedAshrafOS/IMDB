@@ -17,13 +17,11 @@ namespace IMDB_Final.Models
         public string LastName { get; set; }
         [Required(ErrorMessage = "This Field is Required")]
         public int Age { get; set; }
-
         public virtual ICollection<Movie> Movies { get; set; }
 
         //Navigation Properties
-        //User Connectios
-        public ICollection<User> Users { get; set; }
-
+        //ManyToMany
+        public virtual ICollection<UserDirector> UserDirector { get; set; }
         //Movie Connections
         public List<Movie> Movies_Produced { get; set; }
 

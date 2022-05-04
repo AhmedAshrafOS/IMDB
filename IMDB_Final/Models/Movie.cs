@@ -17,18 +17,15 @@ namespace IMDB_Final.Models
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Movie Image")]
         public string Image { get; set; }
-
-
+        
         public int Like { get; set; }
         public int Dislike { get; set; }
         //public string Comment { get; set; }
 
         //Navigation Properties
-        //User Connectios(Many-to-Many)
-        //public ICollection<User> Users { get; set; }
         //Actors Connections (Many-to-Many)
         public virtual ICollection<MovesActors> MovesActors { get; set; }
-        //public ICollection<Actor> Actors { get; set; }
+        public virtual ICollection<UserMovies> UserMovies { get; set; }
 
         //Directos Connections (Many-to-One)
         public int DirectorId { get; set; }
