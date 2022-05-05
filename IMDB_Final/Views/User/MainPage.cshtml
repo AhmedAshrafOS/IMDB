@@ -4,11 +4,102 @@
     ViewBag.Title = "MainPage";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-<div class="test">    
-    <div style="color:red ; padding:90px;">
-       
-        @Html.ActionLink("UserProfile", "UserProfile", new { controller = "User", id = Model.User.UserId })
-    </div>
-    </div>
+
+<form class="form">
+    <table class="test">
+        <tr>
+            <th>
+                @Html.DisplayName("Movies")
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MovieName)
+                </td>
+
+                <td>
+
+                    @if (item.Image != null)
+                    {
+                        var image = item.Image.Split(new char[] { ',' });
+                        <div class="figure-img">
+                            <img src="~/imgs/ProfileMovie/@image[0]" alt="error" width="50" height="50">
+                        </div>
+                    }
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+    <table class="test">
+        <tr>
+            <th>
+                @Html.DisplayName("Actors")
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.Actors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+
+                <td>
+
+                    @if (item.Image != null)
+                    {
+                        var image = item.Image.Split(new char[] { ',' });
+                        <div class="figure-img">
+                            <img src="~/imgs/ProfileActor/@image[0]" alt="error" width="300" height="300">
+                        </div>
+                    }
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+    <table class="test">
+        <tr>
+            <th>
+                @Html.DisplayName("Dierctor")
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.Directors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+
+                @*<td>
+                        @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                        @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+</form>
 
 

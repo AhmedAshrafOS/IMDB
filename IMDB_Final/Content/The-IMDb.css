@@ -3,6 +3,8 @@
 
 nav {
     position: fixed;
+    left:0px;
+    top:0px;
     white-space: nowrap;
     display: flex;
     width: 100%;
@@ -114,7 +116,8 @@ nav {
 
 .search input[type=search] {
     display: flex;
-    height: 10px;
+    top:100px;
+   
     width: 700px;
     height: 30px;
     border: 0;

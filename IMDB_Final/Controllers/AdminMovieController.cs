@@ -149,7 +149,6 @@ namespace IMDB_Final.Controllers
 
 
         [HttpGet]
-
         public ActionResult EditMovie(int? id)
         {
             if (id != null)

@@ -12,6 +12,9 @@
 
     @RenderBody()
 
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
     @RenderPage("_Footer.cshtml")
 
 

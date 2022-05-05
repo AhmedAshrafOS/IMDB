@@ -111,15 +111,15 @@ form {
 
 
     .field input, form button {
-        height: 50px;
+        height: 30px;
         width: 100%;
         outline: none;
         font-size: 19px;
         color: #ffc200;
-        padding: 0 15px;
+        padding: 0 10px;
         border-radius: 0 5px 5px 0;
-        border: 1px solid #444;
-        background: linear-gradient(#333,#222);
+        border: 0px 1px 1px 1px solid #444;
+
     }
 
 input:focus {
