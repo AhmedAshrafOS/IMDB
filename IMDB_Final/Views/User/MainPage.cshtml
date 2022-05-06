@@ -4,9 +4,74 @@
     ViewBag.Title = "MainPage";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Small Business - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+</head>
 
+<body>
+
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+        <!-- Heading Row-->
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="~/imgs/img/marvel-movies-order.jpeg" alt="..." /></div>
+            <div class="col-lg-5">
+                <h1 class="font-weight-light" style="color:white">IMDb</h1>
+                <p style="color:white">IMDb is the world’s most popular and authoritative source for film, TV and celebrity content</p>
+                <a class="btn btn-warning" href="#!">Sign Up Now</a>
+            </div>
+        </div>
+
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div>
+                    <div class="card-body">
+                        <h2 class="card-title" style="color:white">Batman</h2>
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="~/imgs/img/batman.jpg" alt="batman" style="width: 350px; height:200px;" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="">
+                    <div class="card-body">
+                        <h2 class="card-title" style="color:white">MoonKnight</h2>
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="~/imgs/img/MoonKnight.jpg" alt="MoonKnight" style="width: 350px; height:200px" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="">
+                    <div class="card-body">
+                        <h2 class="card-title" style="color:white">Spiderman</h2>
+                        <img class="img-fluid rounded mb-4 mb-lg-0" src="~/imgs/img/spiderman.jpg" alt="MoonKnight" style="width: 350px; height:200px" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
 <form class="form">
-    <table class="test">
+
+    <div class="test">
         <tr>
             <th>
                 @Html.DisplayName("Movies")
@@ -16,10 +81,9 @@
 
         @foreach (var item in Model.Movies)
         {
-            <tr>
-                <td>
+            
                     @Html.DisplayFor(modelItem => item.MovieName)
-                </td>
+                
 
                 <td>
 
@@ -36,70 +100,70 @@
                         @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
                         @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
                     </td>*@
-            </tr>
-        }
+                @*</tr>*@
+                @*}*@
 
-    </table>
-    <table class="test">
-        <tr>
-            <th>
-                @Html.DisplayName("Actors")
-            </th>
+                @*</table>*@
+                @*<table class="test">
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Actors")
+                        </th>
 
-        </tr>
+                    </tr>
 
-        @foreach (var item in Model.Actors)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-
-                <td>
-
-                    @if (item.Image != null)
+                    @foreach (var item in Model.Actors)
                     {
-                        var image = item.Image.Split(new char[] { ',' });
-                        <div class="figure-img">
-                            <img src="~/imgs/ProfileActor/@image[0]" alt="error" width="300" height="300">
-                        </div>
-                    }
-                </td>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+
+                            <td>
+
+                                @if (item.Image != null)
+                                {
+                                    var image = item.Image.Split(new char[] { ',' });
+                                    <div class="figure-img">
+                                        <img src="~/imgs/ProfileActor/@image[0]" alt="error" width="300" height="300">
+                                    </div>
+                                }
+                            </td>*@
                 @*<td>
                         @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
                         @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
                         @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
                     </td>*@
-            </tr>
-        }
+                @*</tr>*@
+                @*}*@
 
-    </table>
-    <table class="test">
-        <tr>
-            <th>
-                @Html.DisplayName("Dierctor")
-            </th>
+                @*</table>
+                    <table class="test">
+                        <tr>
+                            <th>
+                                @Html.DisplayName("Dierctor")
+                            </th>
 
-        </tr>
+                        </tr>
 
-        @foreach (var item in Model.Directors)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
+                        @foreach (var item in Model.Directors)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                    @Html.DisplayFor(modelItem => item.LastName)
+                                </td>*@
 
                 @*<td>
                         @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
                         @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
                         @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
                     </td>*@
-            </tr>
-        }
+                @*</tr>*@
+                @*}
 
-    </table>
-</form>
+                        </table>
+                    </form>*@
 
 
