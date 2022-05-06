@@ -122,6 +122,7 @@
     <Compile Include="Controllers\AdminDirectorController.cs" />
     <Compile Include="Controllers\AdminMovieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\testController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\AdminStyle.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\The-IMDb.css" />
     <Content Include="Content\_LoginStyle.css" />
     <Content Include="Content\_MainStyle.css" />
@@ -199,6 +201,10 @@
     <Content Include="imgs\group.svg" />
     <Content Include="imgs\imdb-title.jpg" />
     <Content Include="imgs\IMDB.png" />
+    <Content Include="imgs\img\batman.jpg" />
+    <Content Include="imgs\img\marvel-movies-order.jpeg" />
+    <Content Include="imgs\img\MoonKnight.jpg" />
+    <Content Include="imgs\img\spiderman.jpg" />
     <Content Include="imgs\menu.svg" />
     <Content Include="imgs\ProfileActor\no-user.png" />
     <Content Include="imgs\ProfileMovie\MV5BMTkxNzg1OTU4M15BMl5BanBnXkFtZTcwMjcyMjI5MQ%40%40._V1_FMjpg_UX1000_.jpg" />
@@ -299,6 +305,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
+    <Content Include="Views\test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
