@@ -1,10 +1,9 @@
 
 
-
 nav {
     position: fixed;
-    left:0px;
-    top:0px;
+    left: 0px;
+    top: 0px;
     white-space: nowrap;
     display: flex;
     width: 100%;
@@ -26,7 +25,8 @@ nav {
 #all,
 #sin,
 #pro,
-#wlist {
+#wlist,
+#profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +67,15 @@ nav {
     margin-left: 10px;
 }
 
+#profile {
+    text-align: center;
+    display: inline-block;
+    width: 80px;
+    padding: 0 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
 #all {
     width: fit-content;
     padding: 0 7px;
@@ -78,6 +87,24 @@ nav {
 #triangle {
     height: 5px;
     margin-left: 3px;
+}
+
+#profile-list a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+#profile-list {
+    display: none;
+    color: white;
+    list-style: none;
+    /*margin-top: 177px;*/
+    width: 222px;
+    background-color: rgb(37, 37, 37);
+    border-top: 10px solid rgb(37, 37, 37);
+    border-bottom: 10px solid rgb(37, 37, 37);
+    cursor: pointer;
 }
 
 #all-list {
@@ -93,16 +120,16 @@ nav {
     cursor: pointer;
 }
 
-.li1 {
+li {
     display: flex;
     text-align: center;
     height: 50px;
     align-items: center;
 }
 
-.li1 {
-    border-top: 0.5px solid white;
-}
+    li:nth-child(7) {
+        border-top: 0.5px solid white;
+    }
 
 #list-img {
     width: 21px;
@@ -116,12 +143,11 @@ nav {
 
 .search input[type=search] {
     display: flex;
-    top:100px;
-   
-    width: 700px;
+    top: 100px;
+    width: 650px;
     height: 30px;
     border: 0;
-    padding: 6.25px 0 6px 8px;
+    padding: 6.25px 0 6px 5px;
     border-left: 1px solid black;
     outline: none;
 }
@@ -136,6 +162,7 @@ button {
     outline: none;
     cursor: pointer;
 }
+
 
 
 /* ----------------------------post scarch----------------------------- */
@@ -181,12 +208,12 @@ button {
         background-color: rgb(59, 59, 59);
     }
 
-.li1:active {
+li:active {
     border-top: 1px dashed white;
     border-bottom: 1px dashed white;
 }
 
-.li1:hover {
+li:hover {
     background-color: rgb(66, 66, 66);
 }
 
@@ -246,21 +273,30 @@ li > img:hover {
 
     .first-menu {
         display: flex;
+        position: 0 10px 0 8px;
     }
 
-
-    #scarch {
-        justify-content: flex-end;
-    }
-
-    button {
-        background: none;
-        color: white;
-        filter: brightness(2.5);
-        border-radius: 50%;
-    }
-
-        button:hover {
-            background: rgb(24, 24, 24);
+    @media only screen and (max-width:500px) {
+        input,
+        #all,
+        #vline,
+        #all-list {
+            display: none;
         }
+
+        #scarch {
+            justify-content: flex-end;
+        }
+
+        button {
+            background: none;
+            color: white;
+            filter: brightness(2.5);
+            border-radius: 50%;
+        }
+
+            button:hover {
+                background: rgb(24, 24, 24);
+            }
+    }
 }

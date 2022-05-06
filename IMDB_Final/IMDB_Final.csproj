@@ -150,6 +150,22 @@
     <Compile Include="Migrations\202205040626459_SecondUserEdit.designer.cs">
       <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205060406326_CommentSection.cs" />
+    <Compile Include="Migrations\202205060406326_CommentSection.designer.cs">
+      <DependentUpon>202205060406326_CommentSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060604336_updateLocationComments.cs" />
+    <Compile Include="Migrations\202205060604336_updateLocationComments.designer.cs">
+      <DependentUpon>202205060604336_updateLocationComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060606521_updateLocationComments2.cs" />
+    <Compile Include="Migrations\202205060606521_updateLocationComments2.designer.cs">
+      <DependentUpon>202205060606521_updateLocationComments2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060930330_CommentTryPart1.cs" />
+    <Compile Include="Migrations\202205060930330_CommentTryPart1.designer.cs">
+      <DependentUpon>202205060930330_CommentTryPart1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Actor.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -157,6 +173,7 @@
     <Compile Include="Models\Director.cs" />
     <Compile Include="Models\MovesActors.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MoviesComments.cs" />
     <Compile Include="Models\UserActors.cs" />
     <Compile Include="Models\UserDirector.cs" />
     <Compile Include="Models\UserMovies.cs" />
@@ -211,6 +228,7 @@
     <Content Include="imgs\triangle-up.png" />
     <Content Include="imgs\triangle.svg" />
     <Content Include="imgs\whtchlist.svg" />
+    <Content Include="imgs\triangle2.svg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -299,6 +317,10 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
+    <Content Include="Views\User\Search.cshtml" />
+    <Content Include="Views\User\DirectorProfile.cshtml" />
+    <Content Include="Views\User\ActorProfile.cshtml" />
+    <Content Include="Views\User\MovieProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +369,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205040626459_SecondUserEdit.resx">
       <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060406326_CommentSection.resx">
+      <DependentUpon>202205060406326_CommentSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060604336_updateLocationComments.resx">
+      <DependentUpon>202205060604336_updateLocationComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060606521_updateLocationComments2.resx">
+      <DependentUpon>202205060606521_updateLocationComments2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060930330_CommentTryPart1.resx">
+      <DependentUpon>202205060930330_CommentTryPart1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

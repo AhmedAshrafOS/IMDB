@@ -79,10 +79,9 @@
 
 
 .reg {
-    /*position: relative;*/
     width: 500px;
-    height:auto;/*590px;*/
-    background: #fff; /*#1b1b1b;*/
+    height:auto;
+    background: #fff; 
     padding: 40px 35px 70px;
     box-sizing: border-box;
     border: 3px solid #c0c0c0;
@@ -108,9 +107,18 @@ form {
         display: flex;
     }
 
+     form .button {
+        height: 30px;
+        width: 100%;
+        outline: none;
+        font-size: 19px;
+        color: #ffc200;
+        padding: 0 10px;
+        border-radius: 0 5px 5px 0;
+        border: 0px 1px 1px 1px solid #444;
+    }
 
-
-    .field input, form button {
+    .field input {
         height: 30px;
         width: 100%;
         outline: none;
@@ -130,7 +138,7 @@ input:focus {
     animation: glow .8s ease-out infinite alternate;
 }
 /*text box*/
-.input {
+/*.input {
     font-weight: bold;
     font-size: 15px;
     padding: 7px 210px 10px 0px;
@@ -139,7 +147,7 @@ input:focus {
     display: block;
     border-color: #c0c0c0;
     border-radius: 5px;
-}
+}*/
 
 .labelss {
     margin: 0px 0px 0px 2px;
@@ -159,7 +167,7 @@ input:focus {
     padding: 13px 0px 0px 0px;
 }
 /*text box*/
-button {
+.button  {
     border-radius: 5px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -189,3 +197,52 @@ button {
 /*.taa {
     margin-right: 10px;
 }*/
+.wrapper {
+    width: 180px;
+    height: 80px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.radio_group {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    font-size: 40px;
+}
+
+    .radio_group input[type="radio"] {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+        .radio_group input[type="radio"] + label {
+            color: #95a5a6;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: scale(.8);
+        }
+
+        .radio_group input[type="radio"]:checked + label {
+            color: #3498db;
+            transform: scale(1.1);
+        }

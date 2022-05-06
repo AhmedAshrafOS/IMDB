@@ -1,0 +1,161 @@
+﻿@model IMDB_Final.ViewModels.MovieDierctors
+
+@{
+    ViewBag.Title = "DetailsMovie";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>DetailsMovie</h2>
+<body>
+    @using (Html.BeginForm("Comments", "User", FormMethod.Get))
+    {
+
+
+        <div class="reg">
+            <h4>Movie</h4>
+            <hr />
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayName("Dierctor")
+                </dt>
+
+                <dd>
+                    @Html.ActionLink(Model.Director.FirstName + " " + Model.Director.LastName, "DirectorProfile", new { controller = "User", id = Model.Movie.DirectorId })
+
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Movie.MovieName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Movie.MovieName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Movie.Like)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Movie.Like)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Movie.Dislike)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Movie.Dislike)
+                </dd>
+                <dt>
+                    @Html.DisplayName("Actors")
+                </dt>
+                <dd>
+
+                    @foreach (var record in Model.Actorss)
+                    {
+                        <ui>
+                            <li>
+                                @foreach (var record2 in Model.Actors)
+                                {
+                                    if (record2.ActorId == record)
+                                    {
+                                        @Html.ActionLink(record2.FirstName + " " + record2.LastName, "ActorProfile", new { controller = "User", id = record })
+                                    }
+
+                                }
+
+                            </li>
+                        </ui>
+                    }
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Movie.Image)
+                </dt>
+
+                <dd>
+                    @if (Model.Movie.Image != null)
+                    {
+                        foreach (var image in Model.Images)
+                        {
+                            <div class="figure-img">
+                                <img src="~/imgs/ProfileMovie/@image" alt="error" width="300" height="300">
+                            </div>
+                        }
+                        @*@Html.DisplayFor(modelItem => item.Image)*@
+
+                    }
+                    else
+                    {
+                        @*<img src="~/imgs/ProfileMovie/no-user.png" width="50" height="50">*@
+                    }
+                </dd>
+                <dt>
+                    <label>LikeORDisLike</label>
+                </dt>
+
+                <dt>
+                    @Html.DisplayName("Comments")
+                </dt>
+                <dd>
+
+                    @foreach (var record in Model.MoviesComments)
+                    {
+                        <ui>
+                            @Html.DisplayFor(model => record.Name)
+                            @Html.DisplayName(":")
+                            @Html.DisplayFor(model => record.comment)
+                            <br />
+                        </ui>
+
+                    }
+
+                </dd>
+
+            </dl>
+
+            @Html.HiddenFor(model => model.Movie.MovieId)
+
+            <div>  <input type="text" name="comment" placeholder="Add Comment"></div>
+
+            <button class="button" type="submit"></button>
+
+        </div>
+
+
+    }
+    @using (Html.BeginForm("Like", "User", FormMethod.Get))
+    {<div class="reg">
+            <dl>
+                <dd>
+                    @*<input type="radio" class="btn btn-info" value="Like" onclick="location.href='@Url.Action("Action", "Controller")'" />*@
+                    @Html.HiddenFor(model => model.Movie.MovieId)
+                    <div class="wrapper">
+ 
+                        <div class="radio_group">
+                            <input type="radio" checked="checked" name="like" @*onclick="location.href='@Url.Action("Action", "Controller")'"*@>
+                            <label for="like">
+                                <i class="fas fa-thumbs-up"></i>
+                            </label>
+                        </div>
+
+                        <div class="radio_group">
+                            <input type="radio" name="like" @*onclick="location.href='@Url.Action("Action", "Controller")'"*@>
+                            <label for="like">
+                                <i class="fas fa-thumbs-down"></i>
+                            </label>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+    }
+</body>
+<p>
+    @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = Model.Movie.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

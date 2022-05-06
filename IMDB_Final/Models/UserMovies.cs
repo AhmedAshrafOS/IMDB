@@ -17,7 +17,8 @@ namespace IMDB_Final.Models
         public bool Like { get; set; }
         public bool disLike { get; set; }
 
-        public UserMovies(){
+        public UserMovies()
+        {
             Like = false;
             disLike = false;
         }

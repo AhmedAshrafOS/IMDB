@@ -1,0 +1,110 @@
+﻿@model IMDB_Final.ViewModels.UserView
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form">
+    @if (Model.notfound != null)
+    {
+
+    <div class="fontSign">
+
+        @Html.DisplayFor(m=>m.notfound)
+    </div>
+
+    }
+    <table class="test">
+        @if (Model.Movies != null)
+        {
+            foreach (var item in Model.Movies)
+            {
+
+                <tr>
+                    <td>
+
+                        @Html.ActionLink(item.MovieName, "MovieProfile", new { controller = "User", id = item.MovieId })
+
+                    </td>
+
+                    <td>
+
+                        @if (item.Image != null)
+                        {
+                            var image = item.Image.Split(new char[] { ',' });
+                            <div class="figure-img">
+                                <img src="~/imgs/ProfileMovie/@image[0]" alt="error" width="50" height="50">
+                            </div>
+                        }
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                        </td>*@
+                </tr>
+            }
+        }
+
+    </table>
+    <table class="test">
+        @if (Model.Actors != null)
+        {
+            foreach (var item in Model.Actors)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.LastName)
+                        @Html.ActionLink(item.FirstName +""+ item.LastName , "ActorProfile", new { controller = "User", id = item.ActorId })
+
+                    </td>
+
+                    <td>
+
+                        @if (item.Image != null)
+                        {
+                            var image = item.Image.Split(new char[] { ',' });
+                            <div class="figure-img">
+                                <img src="~/imgs/ProfileActor/@image[0]" alt="error" width="300" height="300">
+                            </div>
+                        }
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                        </td>*@
+                </tr>
+            }
+        }
+
+    </table>
+    <table class="test">
+        @if (Model.Directors != null)
+        {
+            foreach (var item in Model.Directors)
+            {
+
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.FirstName + "" + item.LastName, "DirectorProfile", new { controller = "User", id = item.DirectorId })
+
+                    </td>
+
+                    @*<td>
+                            @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Details", "DetailsMovie", new { controller = "AdminMovie", id = item.MovieId }) |
+                            @Html.ActionLink("Delete", "Delete", new { controller = "AdminMovie", id = item.MovieId })
+                        </td>*@
+                </tr>
+            }
+        }
+
+    </table>
+
+</form>
+
+

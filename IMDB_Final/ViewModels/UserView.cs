@@ -15,5 +15,6 @@ namespace IMDB_Final.ViewModels
         public int[] Actorss { get; set; }
         public int[] Moviess { get; set; }
         public int[] Directorss { get; set; }
+        public string notfound { get; set; }
     }
 }

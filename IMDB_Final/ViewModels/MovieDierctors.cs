@@ -13,6 +13,8 @@ namespace IMDB_Final.ViewModels
         public List<Director> Directors { get; set; }
         public List<Movie> Movies { get; set; }
         public List<Actor> Actors { get; set; }
+        public List<User> Users { get; set; }
+        public List<MoviesComments> MoviesComments { get; set; }
         public int[] Actorss { get; set; }
         public int[] Moviess { get; set; }
         public string[] Images { get; set; }

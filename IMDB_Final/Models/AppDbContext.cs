@@ -16,7 +16,7 @@ namespace IMDB_Final.Models
             modelBuilder.Entity<MovesActors>().HasKey(sc => new { sc.MovieId, sc.ActorId});
             modelBuilder.Entity<UserActors>().HasKey(sc => new { sc.UserId, sc.ActorId });
             modelBuilder.Entity<UserDirector>().HasKey(sc => new { sc.UserId, sc.DirectorId });
-            modelBuilder.Entity<UserMovies>().HasKey(sc => new { sc.UserId, sc.MovieId });
+            modelBuilder.Entity<UserMovies>().HasKey(sc => new { sc.UserId, sc.MovieId });  
             //Movies and Actors
             //modelBuilder.Entity<Movie>()
             //   .HasMany<Actor>(s => s.Actors)
@@ -69,5 +69,6 @@ namespace IMDB_Final.Models
         public DbSet<UserActors> UserActors { get; set; }
         public DbSet<UserDirector> UserDirector { get; set; }
         public DbSet<UserMovies> UserMovies { get; set; }
+        public DbSet<MoviesComments> MoviesComments { get; set; }
     }
 }

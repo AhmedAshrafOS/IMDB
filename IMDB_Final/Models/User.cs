@@ -51,5 +51,6 @@ namespace IMDB_Final.Models
         public virtual ICollection<UserMovies> UserMovies { get; set; }
 
 
+
     }
 }

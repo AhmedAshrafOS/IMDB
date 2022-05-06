@@ -1,0 +1,56 @@
+﻿@model IMDB_Final.ViewModels.MovieDierctors
+
+@{
+    ViewBag.Title = "DirectorDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>DirectorDetails</h2>
+<form class="form">
+    <div class="reg">
+        <h4>Director</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Director.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Director.FirstName)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Director.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Director.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Director.Age)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Director.Age)
+            </dd>
+            <dd>
+                <h6>Movies Preduced</h6>
+                @foreach (var record in Model.Movies)
+                {
+                    <ui>
+                        <li>
+                            @Html.ActionLink(record.MovieName, "MovieProfile", new { controller = "User", id = record.MovieId })
+                        </li>
+                    </ui>
+                }
+
+            </dd>
+        </dl>
+    </div>
+</form>
+<p>
+    @Html.ActionLink("Edit", "Edit")
+    @Html.ActionLink("Back to List", "Index")
+</p>
