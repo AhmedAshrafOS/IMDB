@@ -19,6 +19,15 @@ namespace IMDB_Final.ViewModels
         public int[] Moviess { get; set; }
         public string[] Images { get; set; }
         public virtual Actor Actor { get; set; }
+        public bool checkLike { get; set; }
+        public bool checkdisLike { get; set; }
+        //public int countLike { get; set; }
+        //public int countDislike { get; set; }
+        public MovieDierctors()
+        {
+            checkLike = false;
+            checkdisLike = false;
+        }
 
     }
 }

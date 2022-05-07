@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C6CBC95-3134-43E1-AAA0-E379E2BB4B25}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IMDB_Final</RootNamespace>
+    <AssemblyName>IMDB_Final</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.8\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.8\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminAccountController.cs" />
+    <Compile Include="Controllers\AdminActorController.cs" />
+    <Compile Include="Controllers\AdminDirectorController.cs" />
+    <Compile Include="Controllers\AdminMovieController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\testController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204282124529_FirstDB.cs" />
+    <Compile Include="Migrations\202204282124529_FirstDB.designer.cs">
+      <DependentUpon>202204282124529_FirstDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204300159065_Movie add.cs" />
+    <Compile Include="Migrations\202204300159065_Movie add.designer.cs">
+      <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205011116249_changedatabase.cs" />
+    <Compile Include="Migrations\202205011116249_changedatabase.designer.cs">
+      <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205021156320_ImagesActor.cs" />
+    <Compile Include="Migrations\202205021156320_ImagesActor.designer.cs">
+      <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205031139387_FirstUserEdit.cs" />
+    <Compile Include="Migrations\202205031139387_FirstUserEdit.designer.cs">
+      <DependentUpon>202205031139387_FirstUserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205040626459_SecondUserEdit.cs" />
+    <Compile Include="Migrations\202205040626459_SecondUserEdit.designer.cs">
+      <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060406326_CommentSection.cs" />
+    <Compile Include="Migrations\202205060406326_CommentSection.designer.cs">
+      <DependentUpon>202205060406326_CommentSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060604336_updateLocationComments.cs" />
+    <Compile Include="Migrations\202205060604336_updateLocationComments.designer.cs">
+      <DependentUpon>202205060604336_updateLocationComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060606521_updateLocationComments2.cs" />
+    <Compile Include="Migrations\202205060606521_updateLocationComments2.designer.cs">
+      <DependentUpon>202205060606521_updateLocationComments2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205060930330_CommentTryPart1.cs" />
+    <Compile Include="Migrations\202205060930330_CommentTryPart1.designer.cs">
+      <DependentUpon>202205060930330_CommentTryPart1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Actor.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\AppDbContext.cs" />
+    <Compile Include="Models\Director.cs" />
+    <Compile Include="Models\MovesActors.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MoviesComments.cs" />
+    <Compile Include="Models\UserActors.cs" />
+    <Compile Include="Models\UserDirector.cs" />
+    <Compile Include="Models\UserMovies.cs" />
+    <Compile Include="ViewModels\MovieActors.cs" />
+    <Compile Include="ViewModels\MovieDierctors.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminServices.cs" />
+    <Compile Include="Services\DirectorService.cs" />
+    <Compile Include="ViewModels\UserFavActors.cs" />
+    <Compile Include="ViewModels\UserView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\AdminStyle.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\The-IMDb.css" />
+    <Content Include="Content\_LoginStyle.css" />
+    <Content Include="Content\_MainStyle.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="imgs\company.svg" />
+    <Content Include="imgs\document-page-blank.svg" />
+    <Content Include="imgs\film-img.svg" />
+    <Content Include="imgs\group.svg" />
+    <Content Include="imgs\imdb-title.jpg" />
+    <Content Include="imgs\IMDB.png" />
+    <Content Include="imgs\img\batman.jpg" />
+    <Content Include="imgs\img\marvel-movies-order.jpeg" />
+    <Content Include="imgs\img\MoonKnight.jpg" />
+    <Content Include="imgs\img\spiderman.jpg" />
+    <Content Include="imgs\menu.svg" />
+    <Content Include="imgs\ProfileActor\no-user.png" />
+    <Content Include="imgs\ProfileMovie\MV5BMTkxNzg1OTU4M15BMl5BanBnXkFtZTcwMjcyMjI5MQ%40%40._V1_FMjpg_UX1000_.jpg" />
+    <Content Include="imgs\ProfileMovie\no-user.png" />
+    <Content Include="imgs\right-arrow-black-triangle.svg" />
+    <Content Include="imgs\right-arrow-triangle.svg" />
+    <Content Include="imgs\right-arrow.svg" />
+    <Content Include="imgs\scarch.svg" />
+    <Content Include="imgs\television.svg" />
+    <Content Include="imgs\triangle-up.png" />
+    <Content Include="imgs\triangle.svg" />
+    <Content Include="imgs\whtchlist.svg" />
+    <Content Include="imgs\triangle2.svg" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\.gitignore" />
+    <Content Include="Scripts\chosen_v1.8.7\composer.json" />
+    <Content Include="Scripts\chosen_v1.8.7\LICENSE.md" />
+    <Content Include="Scripts\chosen_v1.8.7\.travis.yml" />
+    <Content Include="Scripts\chosen_v1.8.7\contributing.md" />
+    <Content Include="Scripts\chosen_v1.8.7\Gruntfile.coffee" />
+    <Content Include="Scripts\chosen_v1.8.7\package-lock.json" />
+    <Content Include="Scripts\chosen_v1.8.7\package-travis.yml" />
+    <Content Include="Scripts\chosen_v1.8.7\package.json" />
+    <Content Include="Scripts\chosen_v1.8.7\publish-package.sh" />
+    <Content Include="Scripts\chosen_v1.8.7\README.md" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen-sprite%402x.png" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen-sprite.png" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.css" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.jquery.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.min.css" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.proto.js" />
+    <Content Include="Scripts\chosen_v1.8.7\chosen.proto.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\chosen.png" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\init.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\init.proto.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\oss-credit.png" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prism.css" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prism.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\prototype-1.7.0.0.js" />
+    <Content Include="Scripts\chosen_v1.8.7\docsupport\style.css" />
+    <Content Include="Scripts\chosen_v1.8.7\index.html" />
+    <Content Include="Scripts\chosen_v1.8.7\index.proto.html" />
+    <Content Include="Scripts\chosen_v1.8.7\options.html" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\The-IMDb.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\_Header1.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\AdminAccount\Login.cshtml" />
+    <Content Include="Views\Shared\_AdminHomeLayout.cshtml" />
+    <Content Include="Views\AdminAccount\LoggedIn.cshtml" />
+    <Content Include="Views\AdminDirector\Index.cshtml" />
+    <Content Include="Views\AdminDirector\Create.cshtml" />
+    <Content Include="Views\AdminDirector\Edit.cshtml" />
+    <Content Include="Views\AdminDirector\Delete.cshtml" />
+    <Content Include="Views\AdminMovie\CreateMovie.cshtml" />
+    <Content Include="Views\AdminMovie\Index.cshtml" />
+    <Content Include="Views\AdminMovie\DetailsMovie.cshtml" />
+    <Content Include="Views\AdminMovie\EditMovie.cshtml" />
+    <Content Include="Views\AdminMovie\Delete.cshtml" />
+    <Content Include="Views\AdminDirector\DirectorDetails.cshtml" />
+    <Content Include="Views\AdminActor\CreateActor.cshtml" />
+    <Content Include="Views\AdminActor\Index.cshtml" />
+    <Content Include="Views\AdminActor\DetailsActor.cshtml" />
+    <Content Include="Views\AdminActor\EditActor.cshtml" />
+    <Content Include="Views\AdminActor\Delete.cshtml" />
+    <Content Include="Views\User\MainPage.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\User\EditProfile.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\User\Search.cshtml" />
+    <Content Include="Views\User\DirectorProfile.cshtml" />
+    <Content Include="Views\User\ActorProfile.cshtml" />
+    <Content Include="Views\User\MovieProfile.cshtml" />
+=======
+    <Content Include="Views\test\Index.cshtml" />
+>>>>>>> 473d5e0c2547e97966790128e67cc6c73efb761e
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="imgs\ProfileUser\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202204282124529_FirstDB.resx">
+      <DependentUpon>202204282124529_FirstDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204300159065_Movie add.resx">
+      <DependentUpon>202204300159065_Movie add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205011116249_changedatabase.resx">
+      <DependentUpon>202205011116249_changedatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205021156320_ImagesActor.resx">
+      <DependentUpon>202205021156320_ImagesActor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205031139387_FirstUserEdit.resx">
+      <DependentUpon>202205031139387_FirstUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205040626459_SecondUserEdit.resx">
+      <DependentUpon>202205040626459_SecondUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060406326_CommentSection.resx">
+      <DependentUpon>202205060406326_CommentSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060604336_updateLocationComments.resx">
+      <DependentUpon>202205060604336_updateLocationComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060606521_updateLocationComments2.resx">
+      <DependentUpon>202205060606521_updateLocationComments2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205060930330_CommentTryPart1.resx">
+      <DependentUpon>202205060930330_CommentTryPart1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55514</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55514/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

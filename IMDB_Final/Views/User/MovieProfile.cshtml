@@ -3,14 +3,13 @@
 @{
     ViewBag.Title = "DetailsMovie";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
+
 }
 
 <h2>DetailsMovie</h2>
 <body>
     @using (Html.BeginForm("Comments", "User", FormMethod.Get))
     {
-
-
         <div class="reg">
             <h4>Movie</h4>
             <hr />
@@ -126,36 +125,151 @@
 
 
     }
-    @using (Html.BeginForm("Like", "User", FormMethod.Get))
-    {<div class="reg">
+    <form id="test">
+        <div class="reg">
             <dl>
                 <dd>
-                    @*<input type="radio" class="btn btn-info" value="Like" onclick="location.href='@Url.Action("Action", "Controller")'" />*@
                     @Html.HiddenFor(model => model.Movie.MovieId)
                     <div class="wrapper">
- 
-                        <div class="radio_group">
-                            <input type="radio" checked="checked" name="like" @*onclick="location.href='@Url.Action("Action", "Controller")'"*@>
-                            <label for="like">
-                                <i class="fas fa-thumbs-up"></i>
-                            </label>
-                        </div>
+                        @if (Model.checkLike == true)
+                        {
+                            <div class="radio_group">
+                                <input type="radio" checked="checked" id="Like" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </label>
+                            </div>
+                            <div class="radio_group">
+                                <input type="radio" id="DisLike" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </label>
+                            </div>
+                        }
 
-                        <div class="radio_group">
-                            <input type="radio" name="like" @*onclick="location.href='@Url.Action("Action", "Controller")'"*@>
-                            <label for="like">
-                                <i class="fas fa-thumbs-down"></i>
-                            </label>
-                        </div>
+                        else if (Model.checkdisLike == true)
+                        {
+                            <div class="radio_group">
+                                <input type="radio" checked="checked" id="DisLike" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </label>
+                            </div>
+                            <div class="radio_group">
+                                <input type="radio" id="Like" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </label>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="radio_group">
+                                <input type="radio" id="Like" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </label>
+                            </div>
+                            <div class="radio_group">
+                                <input type="radio" id="DisLike" value="true" name="like">
+                                <label for="like">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </label>
+                            </div>
+                        }
+
+
+                    </div>
+                    <br />
+                    <div class="alret alert-success" style="display:none ;" id="success">
+                        <strong>You like this Movie   </strong>
+                    </div>
+                    <div class="alret alert-danger" style="display:none ;" id="fail">
+                        <strong>U already liked this Movie   </strong>
+                    </div>
+                    <div class="alret alert-success" style="display:none ;" id="ssuccess">
+                        <strong>You dislike this Movie    </strong>
+                    </div>
+                    <div class="alret alert-danger" style="display:none ;" id="sfail">
+                        <strong>U already dislike this Movie   </strong>
                     </div>
                 </dd>
             </dl>
         </div>
-    }
+
+    </form>
 </body>
 <p>
     @Html.ActionLink("Edit", "EditMovie", new { controller = "AdminMovie", id = Model.Movie.MovieId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
 
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#Like").click(function () {
+                var val = $("input[type='radio']:checked").val();
+
+                myData = $("#test").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/User/Like",
+                    data: myData,
+                    success: function (response) {
+                        if (response.result == 1) {
+                            $("#success").show(1000);
+                            $("#success").hide(1000);
+                        }
+                        else if (response.result == 0) {
+                            $("#fail").show(1000);
+                            $("#fail").hide(1000);
+                        }
+                    },
+
+
+
+                })
+
+            })
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#DisLike").click(function () {
+                var val = $("input[type='radio']:checked").val();
+
+                myData = $("#test").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/User/DisLike",
+                    data: myData,
+                    success: function (response) {
+                        if (response.result == 1) {
+                            $("#ssuccess").show(1000);
+                            $("#ssuccess").hide(1000);
+                        }
+                        else if (response.result == 0) {
+                            $("#sfail").show(1000);
+                            $("#sfail").hide(1000);
+                        }
+                    },
+
+
+
+                })
+
+            })
+        })
+    </script>
+
+
+
+
+}
 

@@ -423,13 +423,29 @@ namespace IMDB_Final.Controllers
 
         public ActionResult MovieProfile(int id)
         {
+            int likecounter=0;
+            int dislikecounter=0;
             List<int> ActorList = new List<int>();
             var movie = db.Movies.SingleOrDefault(x => x.MovieId == id);
             var Dierctor = db.Directors.SingleOrDefault(x => x.DirectorId == movie.DirectorId);
             var ActorID = db.MovesActors.Where(x => x.MovieId == id).ToList();
             var Actors = db.Actors.ToList();
             var comments = db.MoviesComments.Where(x => x.MovieId == id).ToList();
-            foreach (var iteam in ActorID)
+            var likechecker = db.UserMovies.Where(x => x.MovieId == id).ToList();
+            foreach (var iteam in likechecker)
+            {
+                if (iteam.Like == true)
+                {
+                    likecounter++;
+                }
+                else if (iteam.disLike == true)
+                {
+                    dislikecounter++;
+                }
+            }
+            movie.Like = likecounter;
+            movie.Dislike = dislikecounter;
+                foreach (var iteam in ActorID)
             {
                 ActorList.Add((int)iteam.ActorId);
             }
@@ -442,6 +458,22 @@ namespace IMDB_Final.Controllers
                 Director = Dierctor
 
             };
+            if (Session["UserID"] != null) { 
+                foreach (var iteam in likechecker)
+                {
+                    if (iteam.UserId == (int)Int16.Parse(Session["UserID"].ToString()))
+                    {
+                        if (iteam.Like == true)
+                        {
+                            MovieDetails.checkLike = true;
+                        }
+                        else if (iteam.disLike == true)
+                        {
+                            MovieDetails.checkdisLike = true;
+                        }
+                    }
+                }
+            }
             if (movie.Image != null)
             {
                 MovieDetails.Images = movie.Image.Split(new char[] { ',' });
@@ -490,80 +522,79 @@ namespace IMDB_Final.Controllers
             return RedirectToAction("MovieProfile", new { id = id });
         }
 
-
-        public ActionResult Like(MovieDierctors MovieDierctors)
+        [HttpPost]
+        public ActionResult Like(MovieDierctors MovieDierctors,string like)
         {
-            int UserID = int.Parse(User.Identity.Name);
+            int UserID = (int)Int16.Parse(Session["UserID"].ToString());
             var x = db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId);
             if (x != null)
             {
 
                 if (x.Like == true)
                 {
-                    return PartialView("MovieProfile", db.Movies.Find(MovieDierctors.Movie.MovieId));
+                    return Json(new { result = 0 });
                 }
                 else if (x.Like == false)
                 {
+                    db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId).disLike = false;
                     db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId).Like = true;
                     db.SaveChanges();
-                    return PartialView("MovieProfile", db.Movies.Find(MovieDierctors.Movie.MovieId));
 
-                }
-                else
-                {
-                    return PartialView("MovieProfile", db.Movies.Find(MovieDierctors.Movie.MovieId));
+                    return Json(new { result = 1 });
                 }
             }
             else
             {
-                Models.UserMovies like = new UserMovies()
+                Models.UserMovies likes = new UserMovies()
                 {
                     MovieId = MovieDierctors.Movie.MovieId,
                     UserId = UserID,
-                    Like = true
+                    Like = true,
+                    disLike=false,
+                   
                 };
-                db.UserMovies.Add(like);
+                db.UserMovies.Add(likes);
                 db.SaveChanges();
-                return PartialView("MovieProfile", db.Movies.Find(MovieDierctors.Movie.MovieId));
+                return Json(new { result = 1 });
             }
+            return Json(new { result = 0 });
         }
 
-        //public ActionResult DissLike(int id)
-        //{
-        //    int UserID = int.Parse(User.Identity.Name);
-        //    var x = db.Tbl_Like.FirstOrDefault(a => a.PostID == id && a.UserID == UserID);
-        //    if (x != null)
-        //    {
-        //        if (x.Like == true)
-        //        {
-        //            db.Tbl_Like.FirstOrDefault(a => a.PostID == id && a.UserID == UserID).Like = false;
-        //            db.SaveChanges();
-        //            return PartialView("LoadPartial", db.Tbl_Post.Find(id));
+        public ActionResult DisLike(MovieDierctors MovieDierctors, string like)
+        {
+            int UserID = (int)Int16.Parse(Session["UserID"].ToString());
+        var x = db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId);
+            if (x != null)
+            {
 
-        //        }
-        //        else if (x.Like == false)
-        //        {
-        //            return PartialView("LoadPartial", db.Tbl_Post.Find(id));
-        //        }
-        //        else
-        //        {
-        //            return PartialView("LoadPartial", db.Tbl_Post.Find(id));
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Models.Tbl_Like like = new Tbl_Like()
-        //        {
-        //            PostID = id,
-        //            UserID = UserID,
-        //            Like = false
-        //        };
-        //        db.Tbl_Like.Add(like);
-        //        db.SaveChanges();
-        //        return PartialView("LoadPartial", db.Tbl_Post.Find(id));
-        //    }
+                if (x.disLike == true)
+                {
+                    return Json(new { result = 0 });
+                }
+                else if (x.disLike == false)
+                {
+                    db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId).disLike = true;
+                    db.UserMovies.FirstOrDefault(a => a.UserId == UserID && a.MovieId == MovieDierctors.Movie.MovieId).Like = false;
+                    db.SaveChanges();
 
-        //}
+                    return Json(new { result = 1 });
+                }
+            }
+            else
+            {
+                Models.UserMovies likes = new UserMovies()
+                {
+                    MovieId = MovieDierctors.Movie.MovieId,
+                    UserId = UserID,
+                    disLike = true,
+                    Like=false
+                };
+                db.UserMovies.Add(likes);
+                db.SaveChanges();
+                return Json(new { result = 1 });
+            }
+            return Json(new { result = 0 });
+        }
 
     }
 
