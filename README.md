@@ -1,7 +1,7 @@
 # IMDb-replica 
 
 
-**IMDb-replica ** website for film ranking.
+**IMDb-replica** website for film ranking.
 
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/navendu-pottekkat/awesome-readme?include_prereleases)
@@ -12,11 +12,12 @@
 site using C# with MVC integration and a database, featuring two main sections: an admin page and a user page. The admin page allows for full CRUD (Create, Read, Update, Delete) operations to manage the content. The user page includes a search engine, user profiles, and links to films, directors, and actors.
 
 Key Features:
- **Admin Page:
+
+ **Admin Page**:
 
 - Complete CRUD operations for managing films, directors, and actors.
 
- **User Page:
+ **User Page**:
 
 - Search Engine: Users can search for films, directors, and actors.
 - User Profiles: Each user has a personal profile.
